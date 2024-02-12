@@ -1,10 +1,13 @@
-import { useState } from 'react'
+import { Provider } from 'react-redux'
 import './App.css'
+import store from './app/store'
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return <>Here live the dragons</>
+  return (
+    <Provider store={store}>
+      <></>
+    </Provider>
+  )
 }
 
 export default App
