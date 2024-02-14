@@ -1,5 +1,6 @@
 import { ViewerManagerContext } from 'pages/Viewer/Viewer'
 import { useContext } from 'react'
+import { SceneExplorerMainContainer } from './SceneExplorerStyles'
 
 export interface SceneExplorerProps {}
 
@@ -8,7 +9,7 @@ const SceneExplorer = (props: SceneExplorerProps) => {
 
   console.log(ViewerManager)
 
-  return <>Explorer test</>
+  return <SceneExplorerMainContainer>Test label</SceneExplorerMainContainer>
 }
 
 export default SceneExplorer
