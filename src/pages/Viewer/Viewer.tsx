@@ -1,7 +1,11 @@
 import { ViewerManager, ViewerManagerProps } from 'Scene/ViewerManager'
 import SceneExplorer from 'components/SceneExplorer'
 import { createContext, useEffect, useRef, useState } from 'react'
-import { ViewerCanvas, ViewerMainContainer } from './ViewerStyles'
+import {
+  SceneContainer,
+  ViewerCanvas,
+  ViewerMainContainer,
+} from './ViewerStyles'
 
 export interface ViewerProps {}
 
@@ -24,6 +28,10 @@ const Viewer = (props: ViewerProps) => {
 
   useEffect(() => {
     console.log(viewerManager, containerRef)
+    console.log(
+      containerRef.current?.clientWidth,
+      containerRef.current?.clientHeight,
+    )
     containerRef.current &&
       viewerManager?.resize(
         containerRef.current.clientWidth,
@@ -35,10 +43,9 @@ const Viewer = (props: ViewerProps) => {
     <ViewerManagerContext.Provider value={viewerManager}>
       <ViewerMainContainer>
         <SceneExplorer />
-        <div id='viewer-container'>
-          {/** Add pos: relative for theme button */}
+        <SceneContainer>
           <ViewerCanvas ref={containerRef} />
-        </div>
+        </SceneContainer>
         <SceneExplorer />
       </ViewerMainContainer>
     </ViewerManagerContext.Provider>

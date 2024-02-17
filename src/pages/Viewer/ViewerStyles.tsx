@@ -12,4 +12,8 @@ const ViewerCanvas = styled.canvas`
   width: 100%;
 `
 
-export { ViewerCanvas, ViewerMainContainer }
+const SceneContainer = styled.div`
+  flex-grow: 1;
+`
+
+export { SceneContainer, ViewerCanvas, ViewerMainContainer }

@@ -1,31 +1,32 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { ViewerManagerProps } from 'types'
+import { Theme } from 'types'
 import { RootState } from './store'
 
 interface ViewerManagerSlice {
-  viewerManager: ViewerManagerProps | null
+  theme: Theme
 }
 
 const initialState: ViewerManagerSlice = {
-  viewerManager: null,
+  theme: 'light',
 }
 
 export const appSlice = createSlice({
   name: 'app',
   initialState,
   reducers: {
-    setViewerManager: (state, action: PayloadAction<ViewerManagerProps>) => {
-      state.viewerManager = action.payload
+    setTheme: (state, action: PayloadAction<Theme>) => {
+      state.theme = action.payload
+      window.localStorage.setItem('theme', action.payload)
     },
   },
 })
 
 /* ------------ Actions ------------ */
 
-export const { setViewerManager } = appSlice.actions
+export const { setTheme } = appSlice.actions
 
 /* ------------ Selectors ------------ */
 
-export const getviewerManager = (state: RootState) => state.app.viewerManager
+export const getCurrentTheme = (state: RootState) => state.app.theme
 
 export default appSlice.reducer

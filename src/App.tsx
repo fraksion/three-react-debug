@@ -1,13 +1,27 @@
+import { getCurrentTheme, setTheme } from 'app/appReducer'
+import { useAppDispatch, useAppSelector } from 'app/hooks'
+import { THEME } from 'constants'
 import Viewer from 'pages/Viewer'
-import { Provider } from 'react-redux'
+import { useEffect } from 'react'
+import { ThemeProvider } from 'styled-components'
+import { Theme } from 'types'
 import './App.css'
-import store from './app/store'
+import theme from './theme'
 
 function App() {
+  const dispatch = useAppDispatch()
+
+  const currentTheme = useAppSelector(getCurrentTheme)
+
+  useEffect(() => {
+    const currentTheme = window.localStorage.getItem(THEME) as Theme
+    dispatch(setTheme(currentTheme || 'light'))
+  }, [])
+
   return (
-    <Provider store={store}>
+    <ThemeProvider theme={theme[currentTheme]}>
       <Viewer />
-    </Provider>
+    </ThemeProvider>
   )
 }
 

@@ -5,6 +5,20 @@ const SceneExplorerMainContainer = styled.div`
   max-width: 38rem;
   height: 100%;
   padding: 0.5rem 0;
-  background-color: aliceblue;
+  background-color: ${(props) => props.theme.primary};
 `
-export { SceneExplorerMainContainer }
+
+const TestSecondaryContainer = styled.div`
+  background: ${(props) => props.theme.secondary};
+  color: ${(props) => props.theme.fontSecondary};
+`
+
+const TestPrimaryTextContainer = styled.div`
+  color: ${(props) => props.theme.fontPrimary};
+`
+
+export {
+  SceneExplorerMainContainer,
+  TestPrimaryTextContainer,
+  TestSecondaryContainer,
+}

@@ -21,7 +21,7 @@ export class ViewerManager {
     )
 
     this.renderer = new THREE.WebGLRenderer({ canvas: canvas })
-    // this.renderer.setSize(canvas.innerWidth, window.innerHeight, false)
+    this.renderer.setSize(window.innerWidth, window.innerHeight, false)
 
     const geometry = new THREE.BoxGeometry(1, 1, 1)
     const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 })
@@ -31,17 +31,25 @@ export class ViewerManager {
     this.camera.position.z = 5
     this.animate = this.animate.bind(this)
     this.animate()
+    this.refreshCameraRatio = this.refreshCameraRatio.bind(this)
+    window.addEventListener('resize', this.refreshCameraRatio, false)
   }
 
   render() {}
 
   resize(width: number, heigth: number) {
-    console.log('resize', width, heigth)
     this.renderer.setSize(width, heigth, false)
     this.aspectRatio = width / heigth
     this.camera.aspect = this.aspectRatio
     this.camera.updateProjectionMatrix()
     this.render()
+  }
+
+  refreshCameraRatio() {
+    const parent = this.renderer.domElement.parentElement
+    if (parent) {
+      this.resize(parent.clientWidth, parent.clientHeight)
+    }
   }
 
   animate() {
