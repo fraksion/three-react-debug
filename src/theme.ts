@@ -1,4 +1,14 @@
-const lightTheme = {
+export interface Theme {
+  primary: string
+  secondary: string
+  fontPrimary: string
+  fontSecondary: string
+  hover: string
+  active: string
+  disabled: string
+}
+
+const lightTheme: Theme = {
   primary: '#EDEFEE',
   secondary: '#ccc1c0',
   fontPrimary: '#41403C',
@@ -8,7 +18,7 @@ const lightTheme = {
   disabled: '#999999',
 }
 
-const darkTheme = {
+const darkTheme: Theme = {
   primary: '#41403C',
   secondary: '#66635d',
   fontPrimary: '#EDEFEE',

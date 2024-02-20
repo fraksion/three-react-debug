@@ -13,6 +13,7 @@ export class ViewerManager {
 
   constructor(canvas: HTMLCanvasElement | undefined) {
     this.scene = new THREE.Scene()
+    this.scene.background = new THREE.Color('#f7f5f5')
     this.camera = new THREE.PerspectiveCamera(
       75,
       window.innerWidth / window.innerHeight,

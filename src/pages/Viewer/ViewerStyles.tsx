@@ -14,6 +14,7 @@ const ViewerCanvas = styled.canvas`
 
 const SceneContainer = styled.div`
   flex-grow: 1;
+  position: relative;
 `
 
 export { SceneContainer, ViewerCanvas, ViewerMainContainer }
